@@ -51,7 +51,7 @@ public class OrdenController {
 
 
         model.addAttribute("ordenes", ordenes);
-        return "ordenes/ordenes";
+        return "home/ordenes/ordenes";
     }
 
     @GetMapping("/{codigo}/base64")

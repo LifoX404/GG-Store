@@ -1,77 +1,82 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: layout(~{::title}, ~{::main}, ~{::pageStyles})}">
+
 <head>
-    <meta charset="UTF-8">
+    
     <title>Carrito de Compras</title>
-    
-    <link rel="stylesheet" th:href="@{/css/footer.css}">
-    
-    <link rel="stylesheet" th:href="@{/css/carrito.css}">
-    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+
+    <th:block th:fragment="pageStyles">
+        <link rel="stylesheet" th:href="@{/css/common/colors.css}">
+        <link rel="stylesheet" th:href="@{/css/common/navbar.css}">
+        <link rel="stylesheet" th:href="@{/css/common/footer.css}">
+        <link rel="stylesheet" th:href="@{/css/home/carrito.css}">
+    </th:block>
+
 </head>
-
-
 <body>
-<div th:insert="~{fragments/navbar :: navbar}" />
-<div class="cart-container">
-    <div class="cart-header">
-        <h1 class="cart-title">Tu Carrito de Compras</h1>
-    </div>
 
-    <div th:if="${carrito.items.empty}" class="empty-cart">
-        <div class="empty-cart-icon">🛒</div>
-        <p>Tu carrito está vacío</p>
-        <a th:href="@{/productos}" class="continue-shopping">Comenzar a comprar</a>
-    </div>
+<main>
+    <div class="cart-container">
+        <div class="cart-header">
+            <h1 class="cart-title">Tu Carrito de Compras</h1>
+        </div>
 
-    <div th:if="${not carrito.items.empty}">
-        <div class="cart-items">
-            <div th:each="item : ${carrito.items}" class="cart-item">
-                <div class="item-content">
-                    <div class="item-info">
-                        <h3 class="item-name" th:text="${item.nombreProducto}">Nombre del producto</h3>
-                    </div>
+        <div th:if="${carrito.items.empty}" class="empty-cart">
+            <div class="empty-cart-icon">🛒</div>
+            <p>Tu carrito está vacío</p>
+            <a th:href="@{/productos}" class="continue-shopping">Comenzar a comprar</a>
+        </div>
 
-                    <div class="item-price">
-                        <span class="price-label">Precio:</span>
-                        <span class="price-value" th:text="'S/.' + ${item.precioUnitario}">$0.00</span>
-                    </div>
+        <div th:if="${not carrito.items.empty}">
+            <div class="cart-items">
+                <div th:each="item : ${carrito.items}" class="cart-item">
+                    <div class="item-content">
+                        <div class="item-info">
+                            <h3 class="item-name" th:text="${item.nombreProducto}">Nombre del producto</h3>
+                        </div>
 
-                    <div class="item-quantity">
-                        <span class="quantity-label">Cantidad:</span>
-                        <div class="quantity-value" th:text="${item.cantidadItem}">1</div>
-                    </div>
+                        <div class="item-price">
+                            <span class="price-label">Precio:</span>
+                            <span class="price-value" th:text="'S/.' + ${item.precioUnitario}">$0.00</span>
+                        </div>
 
-                    <div class="item-subtotal">
-                        <span class="subtotal-label">Subtotal:</span>
-                        <span class="subtotal-value" th:text="'S/.' + ${item.subtotal}">$0.00</span>
-                    </div>
+                        <div class="item-quantity">
+                            <span class="quantity-label">Cantidad:</span>
+                            <div class="quantity-value" th:text="${item.cantidadItem}">1</div>
+                        </div>
 
-                    <div class="item-actions">
-                        <form th:action="@{/carrito/eliminar}" method="post">
-                            <input type="hidden" name="codigoProducto" th:value="${item.codigoProducto}" />
-                            <button type="submit" class="remove-btn">Eliminar</button>
-                        </form>
+                        <div class="item-subtotal">
+                            <span class="subtotal-label">Subtotal:</span>
+                            <span class="subtotal-value" th:text="'S/.' + ${item.subtotal}">$0.00</span>
+                        </div>
+
+                        <div class="item-actions">
+                            <form th:action="@{/carrito/eliminar}" method="post">
+                                <input type="hidden" name="codigoProducto" th:value="${item.codigoProducto}" />
+                                <button type="submit" class="remove-btn">Eliminar</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="cart-summary">
-            <div class="total-section">
-                <span class="total-label">Total:</span>
-                <span class="total-value" th:text="'S/.' + ${carrito.total}">0.00</span>
+            <div class="cart-summary">
+                <div class="total-section">
+                    <span class="total-label">Total:</span>
+                    <span class="total-value" th:text="'S/.' + ${carrito.total}">0.00</span>
+                </div>
+
+                <form th:action="@{/carrito/procesar}" method="post">
+                    <button type="submit" class="checkout-btn">Finalizar Compra</button>
+                </form>
             </div>
 
-            <form th:action="@{/carrito/procesar}" method="post">
-                <button type="submit" class="checkout-btn">Finalizar Compra</button>
-            </form>
+            <a th:href="@{/productos}" class="continue-shopping">Seguir comprando</a>
         </div>
-
-        <a th:href="@{/productos}" class="continue-shopping">Seguir comprando</a>
     </div>
-</div>
-<div th:insert="~{fragments/footer :: footer}" />
+</main>
+
 </body>
 
 </html>

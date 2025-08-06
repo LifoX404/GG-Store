@@ -44,7 +44,7 @@ public class CarritoController {
             e.printStackTrace();
             return "redirect:/error";
         }
-        return "carrito/carrito";
+        return "home/carrito/carrito";
     }
 
     @PostMapping("/agregar")
@@ -83,7 +83,7 @@ public class CarritoController {
         CarritoSessionDTO carrito = carritoService.obtenerCarritoDeSession(session);
         if (carrito.getItems().isEmpty()) {
             model.addAttribute("error", "El carrito está vacío.");
-            return "carrito/carrito";
+            return "home/carrito/carrito";
         }
 
         String userId = session.getAttribute("username").toString();

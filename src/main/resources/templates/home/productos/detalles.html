@@ -1,154 +1,160 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+    th:replace="~{layout/base :: layout(~{::title}, ~{::main}, ~{::pageStyles})}">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title th:text="'Detalles - ' + ${producto.nombreProducto}">
-    Detalles del producto
-  </title>
-  <link rel="stylesheet" th:href="@{/css/navbar.css}" />
-  <link rel="stylesheet" th:href="@{/css/footer.css}" />
-  <link rel="stylesheet" th:href="@{/css/index.css}" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" th:href="@{/css/detallesproductos.css}" />
+
+    <title th:text="${producto.nombreProducto}"></title>
+
+    <th:block th:fragment="pageStyles">
+        <link rel="stylesheet" th:href="@{/css/common/colors.css}">
+        <link rel="stylesheet" th:href="@{/css/common/navbar.css}">
+        <link rel="stylesheet" th:href="@{/css/common/footer.css}">
+        <link rel="stylesheet" th:href="@{/css/home/detalles.css}">
+    </th:block>
+
+    <link rel="stylesheet" th:href="@{/css/navbar.css}" />
+    <link rel="stylesheet" th:href="@{/css/footer.css}" />
+    <link rel="stylesheet" th:href="@{/css/index.css}" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/css/detallesproductos.css}" />
 </head>
 
 <body>
-  <div th:insert="~{fragments/navbar :: navbar}"></div>
+    <div th:insert="~{fragments/navbar :: navbar}"></div>
 
-  <div class="breadcrumb">
-    <nav>
-      <ul>
-        <li>
-          <a href="/"><i class="fas fa-home"></i> Inicio</a>
-        </li>
-        <li><span class="breadcrumb-separator">/</span></li>
-        <li><a th:href="@{/productos}">Productos</a></li>
-        <li><span class="breadcrumb-separator">/</span></li>
-        <li>
-          <span class="current" th:text="${producto.nombreProducto}">Producto</span>
-        </li>
-      </ul>
-    </nav>
-  </div>
-
-  <div class="product-container">
-    <div class="product-image-section">
-      <div class="product-image-container">
-        <!-- Imagen desde URL externa -->
-        <img class="product-image" th:if="${#strings.startsWith(producto.imagenProducto, 'http')}"
-          th:src="${producto.imagenProducto}" th:alt="'Imagen de ' + ${producto.nombreProducto}" />
-
-        <!-- Imagen desde carpeta local -->
-        <img class="product-image" th:unless="${#strings.startsWith(producto.imagenProducto, 'http')}"
-          th:src="@{/images/{img}(img=${producto.imagenProducto})}"
-          th:alt="'Imagen de ' + ${producto.nombreProducto}" />
-
-        <div class="image-overlay">
-          <i class="fas fa-search-plus"></i> Ver detalle
-        </div>
-      </div>
+    <div class="breadcrumb">
+        <nav>
+            <ul>
+                <li>
+                    <a href="/"><i class="fas fa-home"></i> Inicio</a>
+                </li>
+                <li><span class="breadcrumb-separator">/</span></li>
+                <li><a th:href="@{/productos}">Productos</a></li>
+                <li><span class="breadcrumb-separator">/</span></li>
+                <li>
+                    <span class="current" th:text="${producto.nombreProducto}">Producto</span>
+                </li>
+            </ul>
+        </nav>
     </div>
 
-    <div class="product-info-section">
-      <div>
-        <h1 class="product-title" th:text="${producto.nombreProducto}">
-          Nombre del Producto
-        </h1>
-        <p class="product-subtitle">
-          Producto de alta calidad disponible en nuestra tienda
-        </p>
-      </div>
+    <div class="product-container">
+        <div class="product-image-section">
+            <div class="product-image-container">
+                <!-- Imagen desde URL externa -->
+                <img class="product-image" th:if="${#strings.startsWith(producto.imagenProducto, 'http')}"
+                    th:src="${producto.imagenProducto}" th:alt="'Imagen de ' + ${producto.nombreProducto}" />
 
-      <div class="price-section">
-        <div class="price-label">Precio</div>
-        <div class="price-value" th:text="'S/. ' + ${producto.precioProducto}">
-          S/. 0.00
-        </div>
-      </div>
+                <!-- Imagen desde carpeta local -->
+                <img class="product-image" th:unless="${#strings.startsWith(producto.imagenProducto, 'http')}"
+                    th:src="@{/images/{img}(img=${producto.imagenProducto})}"
+                    th:alt="'Imagen de ' + ${producto.nombreProducto}" />
 
-      <div class="product-details">
-        <div class="detail-item">
-          <div class="detail-icon">
-            <i class="fas fa-info-circle"></i>
-          </div>
-          <div class="detail-content">
-            <div class="detail-label">Descripción</div>
-            <div class="detail-value" th:text="${producto.descripcionProducto}">
-              Descripción detallada del producto con todas sus características
-              y beneficios.
+                <div class="image-overlay">
+                    <i class="fas fa-search-plus"></i> Ver detalle
+                </div>
             </div>
-          </div>
         </div>
 
-        <div class="detail-item stock-item"
-          th:classappend="${producto.stockProducto > 10} ? 'in-stock' : (${producto.stockProducto > 0} ? 'low-stock' : 'out-of-stock')">
-          <div class="detail-icon">
-            <i class="fas fa-boxes"></i>
-          </div>
-          <div class="detail-content">
-            <div class="detail-label">
-              Stock disponible
-              <span class="stock-badge"
-                th:classappend="${producto.stockProducto > 10} ? 'in-stock' : (${producto.stockProducto > 0} ? 'low-stock' : 'out-of-stock')"
-                th:text="${producto.stockProducto > 10} ? 'En Stock' : (${producto.stockProducto > 0} ? 'Pocas unidades' : 'Agotado')">
-                En Stock
-              </span>
+        <div class="product-info-section">
+            <div>
+                <h1 class="product-title" th:text="${producto.nombreProducto}">
+                    Nombre del Producto
+                </h1>
+                <p class="product-subtitle">
+                    Producto de alta calidad disponible en nuestra tienda
+                </p>
             </div>
-            <div class="detail-value">
-              <span th:text="${producto.stockProducto}">0</span> unidades
-              disponibles
-            </div>
-          </div>
-        </div>
 
-        <div class="detail-item">
-          <div class="detail-icon">
-            <i class="fas fa-truck"></i>
-          </div>
-          <div class="detail-content">
-            <div class="detail-label">Envío</div>
-            <div class="detail-value">
-              Envío gratuito en compras mayores a S/. 100
+            <div class="price-section">
+                <div class="price-label">Precio</div>
+                <div class="price-value" th:text="'S/. ' + ${producto.precioProducto}">
+                    S/. 0.00
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="action-buttons">
-        <form method="post" th:action="@{/carrito/agregar}" th:if="${producto.stockProducto > 0}">
-          <input type="hidden" name="cantidad" value="1" />
-          <input type="hidden" name="productoId" th:value="${producto.codigoProducto}" />
-          <button type="submit" class="btn btn-primary">
-            <i class="fas fa-shopping-cart"></i>
-            Agregar al Carrito
-          </button>
-        </form>
-        <button class="btn btn-primary" th:if="${producto.stockProducto == 0}" style="opacity: 0.6; cursor: not-allowed"
-          disabled>
-          <i class="fas fa-times-circle"></i>
-          No Disponible
-        </button>
-        <a th:href="@{/productos}" class="btn btn-secondary">
-          <i class="fas fa-arrow-left"></i>
-          Volver a Productos
-        </a>
-      </div>
+            <div class="product-details">
+                <div class="detail-item">
+                    <div class="detail-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <div class="detail-content">
+                        <div class="detail-label">Descripción</div>
+                        <div class="detail-value" th:text="${producto.descripcionProducto}">
+                            Descripción detallada del producto con todas sus características
+                            y beneficios.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-item stock-item"
+                    th:classappend="${producto.stockProducto > 10} ? 'in-stock' : (${producto.stockProducto > 0} ? 'low-stock' : 'out-of-stock')">
+                    <div class="detail-icon">
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                    <div class="detail-content">
+                        <div class="detail-label">
+                            Stock disponible
+                            <span class="stock-badge"
+                                th:classappend="${producto.stockProducto > 10} ? 'in-stock' : (${producto.stockProducto > 0} ? 'low-stock' : 'out-of-stock')"
+                                th:text="${producto.stockProducto > 10} ? 'En Stock' : (${producto.stockProducto > 0} ? 'Pocas unidades' : 'Agotado')">
+                                En Stock
+                            </span>
+                        </div>
+                        <div class="detail-value">
+                            <span th:text="${producto.stockProducto}">0</span> unidades
+                            disponibles
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="detail-content">
+                        <div class="detail-label">Envío</div>
+                        <div class="detail-value">
+                            Envío gratuito en compras mayores a S/. 100
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <form method="post" th:action="@{/carrito/agregar}" th:if="${producto.stockProducto > 0}">
+                    <input type="hidden" name="cantidad" value="1" />
+                    <input type="hidden" name="productoId" th:value="${producto.codigoProducto}" />
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-shopping-cart"></i>
+                        Agregar al Carrito
+                    </button>
+                </form>
+                <button class="btn btn-primary" th:if="${producto.stockProducto == 0}"
+                    style="opacity: 0.6; cursor: not-allowed" disabled>
+                    <i class="fas fa-times-circle"></i>
+                    No Disponible
+                </button>
+                <a th:href="@{/productos}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Volver a Productos
+                </a>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div th:insert="~{fragments/footer :: footer}"></div>
+    <div th:insert="~{fragments/footer :: footer}"></div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const productImage = document.querySelector(".product-image");
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const productImage = document.querySelector(".product-image");
 
-      if (productImage) {
-        productImage.addEventListener("click", function () {
-          // Crear modal para imagen ampliada
-          const modal = document.createElement("div");
-          modal.style.cssText = `
+            if (productImage) {
+                productImage.addEventListener("click", function () {
+                    // Crear modal para imagen ampliada
+                    const modal = document.createElement("div");
+                    modal.style.cssText = `
                         position: fixed;
                         top: 0;
                         left: 0;
@@ -162,9 +168,9 @@
                         cursor: pointer;
                     `;
 
-          const enlargedImage = document.createElement("img");
-          enlargedImage.src = this.src;
-          enlargedImage.style.cssText = `
+                    const enlargedImage = document.createElement("img");
+                    enlargedImage.src = this.src;
+                    enlargedImage.style.cssText = `
                         max-width: 90%;
                         max-height: 90%;
                         object-fit: contain;
@@ -172,16 +178,16 @@
                         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
                     `;
 
-          modal.appendChild(enlargedImage);
-          document.body.appendChild(modal);
+                    modal.appendChild(enlargedImage);
+                    document.body.appendChild(modal);
 
-          modal.addEventListener("click", function () {
-            document.body.removeChild(modal);
-          });
+                    modal.addEventListener("click", function () {
+                        document.body.removeChild(modal);
+                    });
+                });
+            }
         });
-      }
-    });
-  </script>
+    </script>
 </body>
 
 </html>

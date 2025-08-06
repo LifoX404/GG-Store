@@ -52,7 +52,7 @@ public class AdminController {
             e.printStackTrace();
             return "redirect:/error";
         }
-        return "admin/clientes";
+        return "admin/clientes/listar";
     }
 
     @GetMapping("clientes/editar/{codigo}")
@@ -72,7 +72,7 @@ public class AdminController {
             e.printStackTrace();
             return "redirect:/error";
         }
-        return "admin/editarcliente";
+        return "admin/clientes/editar";
     }
 
     @PostMapping("/clientes/editar")
@@ -117,7 +117,7 @@ public class AdminController {
             e.printStackTrace();
             return "redirect:/error";
         }
-        return "admin/productos";
+        return "admin/productos/listar";
     }
 
     @GetMapping("productos/editar/{codigo}")
@@ -136,7 +136,7 @@ public class AdminController {
             e.printStackTrace();
             return "redirect:/error";
         }
-        return "admin/editarproducto";
+        return "admin/productos/editar";
     }
 
     @PostMapping("productos/editar")
@@ -174,7 +174,7 @@ public class AdminController {
             return "redirect:/auth/login";
         }
         model.addAttribute("producto", new Producto());
-        return "admin/createproducto";
+        return "admin/productos/crear";
     }
 
     @PostMapping("/productos/create")
@@ -203,7 +203,7 @@ public class AdminController {
             e.printStackTrace();
             return "redirect:/error";
         }
-        return "admin/ordenes";
+        return "admin/ordenes/listar";
     }
 
 
@@ -226,7 +226,7 @@ public class AdminController {
             e.printStackTrace();
             return "redirect:/error";
         }
-        return "admin/detallesorden";
+        return "admin/ordenes/detalles";
     }
 
     @GetMapping("/ordenes/editar/{codigo}")
@@ -245,7 +245,7 @@ public class AdminController {
             e.printStackTrace();
             return "redirect:/error";
         }
-        return "admin/editarorden";
+        return "admin/ordenes/editar";
     }
 
     @PostMapping("/ordenes/editar")

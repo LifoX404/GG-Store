@@ -11,7 +11,7 @@ footer {
     background: var(--bg-dark);
 }
 
-footer .container {
+footer .footer-container {
     max-width: 1800px;
     display: flex;
     flex-direction: column;

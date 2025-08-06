@@ -26,7 +26,7 @@ public class AuthController {
 
     @GetMapping("/login")
     public String login() {
-        return "login";
+        return "auth/login";
     }
 
     @PostMapping("/validate")
@@ -68,7 +68,7 @@ public class AuthController {
     @GetMapping("/register")
     public String registro(Model model) {
         model.addAttribute("registroDTO", new RegistroDTO());
-        return "register";
+        return "auth/register";
     }
 
     @PostMapping("/process")

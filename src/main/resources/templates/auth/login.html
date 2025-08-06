@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+    th:replace="~{layout/base :: layout(~{::title}, ~{::main}, ~{::pageStyles})}">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Iniciar Sesión</title>
-    <link rel="stylesheet" th:href="@{/css/footer.css}">
-    <link rel="stylesheet" th:href="@{/css/common.css}">
-    <link rel="stylesheet" th:href="@{/css/auth.css}">
-    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+
+    <th:block th:fragment="pageStyles">
+        <link rel="stylesheet" th:href="@{/css/common/colors.css}">
+        <link rel="stylesheet" th:href="@{/css/common/navbar.css}">
+        <link rel="stylesheet" th:href="@{/css/common/footer.css}">
+        <link rel="stylesheet" th:href="@{/css/home/auth.css}">
+    </th:block>
+
 </head>
 
 <body class="login-page">
     <div class="tcontainer">
-        <div th:insert="~{fragments/navbar :: navbar}" class="navbar"></div>
-        
+
         <main class="main-content">
             <h2>Iniciar Sesión</h2>
             <section>
@@ -21,17 +25,19 @@
                     <form method="post" th:action="@{/auth/validate}">
                         <div class="form-group has-icon">
                             <label for="txtNombres">Código de Usuario</label>
-                            <input name="username" type="text" class="form-control" id="txtNombres" placeholder="Ingresa tu usuario" required>
+                            <input name="username" type="text" class="form-control" id="txtNombres"
+                                placeholder="Ingresa tu usuario" required>
                             <i class="bi bi-person input-icon"></i>
                         </div>
                         <div class="form-group has-icon">
                             <label for="txtDni">Contraseña</label>
-                            <input name="password" type="password" class="form-control" id="txtDni" placeholder="Ingresa tu contraseña" required>
+                            <input name="password" type="password" class="form-control" id="txtDni"
+                                placeholder="Ingresa tu contraseña" required>
                             <i class="bi bi-lock input-icon"></i>
                         </div>
                         <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
                     </form>
-                    
+
                     <div class="auth-link">
                         <p>¿No tienes una cuenta? <a th:href="@{/auth/register}">Regístrate aquí</a></p>
                     </div>
@@ -39,6 +45,6 @@
             </section>
         </main>
     </div>
-    <div th:insert="~{fragments/footer :: footer}" />
 </body>
+
 </html>

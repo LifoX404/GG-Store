@@ -1,0 +1,412 @@
+/* =========================
+   IMPORTAR BOOTSTRAP ICONS
+   ========================= */
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css');
+
+/* =========================
+   VARIABLES DE COLORES
+   ========================= */
+:root {
+    --primary-color: #333;
+    --accent-color: #dc143c; /* crimson */
+    --accent-hover: #b31232;
+    --bg-light: #f8f9fa;
+    --bg-white: #ffffff;
+    --text-dark: #333;
+    --text-light: #666;
+    --border-color: #ddd;
+    --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================
+   ESTILOS GENERALES
+   ========================= */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    color: var(--text-dark);
+}
+
+.tcontainer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================
+   CONTENIDO PRINCIPAL
+   ========================= */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 20px;
+}
+
+.main-content h2 {
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 300;
+    position: relative;
+}
+
+.register-page .main-content {
+    padding: 60px 15px 15px 15px;
+}
+
+.main-content h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
+/* =========================
+   CONTENEDOR DEL FORMULARIO
+   ========================= */
+.container {
+    background: var(--bg-white);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-medium);
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* =========================
+   ENLACES DE NAVEGACIÓN
+   ========================= */
+.auth-link {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+}
+
+.auth-link p {
+    margin: 0;
+    color: var(--text-light);
+    font-size: 14px;
+}
+
+.auth-link a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.auth-link a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color), #ff6b6b);
+    border-radius: 12px 12px 0 0;
+}
+
+/* =========================
+   FORMULARIOS
+   ========================= */
+form {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 18px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 14px 10px 40px;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    background: var(--bg-white);
+    color: var(--text-dark);
+}
+
+.form-group .input-icon {
+    position: absolute;
+    left: 12px;
+    top: 62%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+    font-size: 16px;
+    pointer-events: none;
+    transition: color 0.3s ease;
+}
+
+.form-group.has-icon .form-control:focus + .input-icon,
+.form-group.has-icon .form-control:not(:placeholder-shown) + .input-icon {
+    color: var(--accent-color);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(220, 20, 60, 0.1);
+    transform: translateY(-1px);
+}
+
+.form-control:hover {
+    border-color: #bbb;
+}
+
+/* =========================
+   BOTONES
+   ========================= */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    min-width: 120px;
+}
+
+.btn-primary {
+    background: var(--accent-color);
+    color: white;
+    box-shadow: var(--shadow-light);
+}
+
+.btn-primary:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    display: none; /* Oculto por defecto */
+}
+
+.btn-secondary:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-1px);
+}
+
+/* =========================
+   ESTILOS ESPECÍFICOS PARA LOGIN
+   ========================= */
+.login-page .container {
+    max-width: 380px;
+}
+
+.login-page .main-content h2 {
+    font-size: 2rem;
+}
+
+.login-page .form-group {
+    margin-bottom: 20px;
+}
+
+.login-page .form-control {
+    padding: 12px 16px 12px 40px;
+    font-size: 16px;
+}
+
+/* =========================
+   ESTILOS ESPECÍFICOS PARA REGISTER
+   ========================= */
+.register-page .container {
+    max-width: 700px;
+    padding: 30px;
+}
+
+.register-page .main-content h2 {
+    font-size: 2.1rem;
+    margin-bottom: 18px;
+}
+
+.register-page .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.register-page .form-group {
+    margin-bottom: 0;
+}
+
+.register-page .form-group.full-width {
+    grid-column: 1 / -1;
+    margin-bottom: 12px;
+}
+
+.register-page .form-control {
+    padding: 10px 12px 10px 38px;
+    font-size: 14px;
+}
+
+.register-page .form-group label {
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+}
+
+.register-page .btn-primary {
+    grid-column: 1 / -1;
+    margin-top: 8px;
+    padding: 12px 24px;
+    font-size: 15px;
+}
+
+.register-page .form-group .input-icon {
+    left: 10px;
+    font-size: 14px;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 20px 15px;
+    }
+    
+    .container {
+        padding: 30px 20px;
+        margin: 0 15px;
+    }
+    
+    .register-page .container {
+        padding: 25px 15px;
+    }
+    
+    .register-page .form-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .register-page .form-group.full-width {
+        grid-column: 1;
+        margin-bottom: 12px;
+    }
+    
+    .register-page .btn-primary {
+        grid-column: 1;
+        margin-top: 12px;
+    }
+    
+    .main-content h2 {
+        font-size: 2rem;
+    }
+    
+    .btn-secondary {
+        display: none;
+    }
+    
+    .form-control {
+        font-size: 16px; /* Previene zoom en iOS */
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .container {
+        padding: 25px 15px;
+    }
+    
+    .register-page .container {
+        padding: 20px 15px;
+    }
+    
+    .form-group {
+        margin-bottom: 18px;
+    }
+    
+    .register-page .form-group {
+        margin-bottom: 12px;
+    }
+    
+    .btn {
+        width: 100%;
+        padding: 14px 20px;
+    }
+}
+
+/* =========================
+   ANIMACIONES
+   ========================= */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* =========================
+   MEJORAS DE ACCESIBILIDAD
+   ========================= */
+.btn:focus,
+.form-control:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

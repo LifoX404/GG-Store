@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nuevo Producto</title>
+  <link rel="stylesheet" th:href="@{/css/aside.css}" />
+  <link rel="stylesheet" th:href="@{/css/editarproducto.css}" />
+</head>
+
+<body>
+  <div th:insert="~{fragments/aside :: aside}" class="sidebar"></div>
+  <main class="main-content">
+    <div class="header">
+      <h2>Nuevo Producto</h2>
+    </div>
+
+    <section>
+      <div class="container">
+        <form method="post" th:object="${producto}" th:action="@{/admin/productos/create}">
+
+          <div class="form-group">
+            <label for="txtNombre">Nombre del Producto</label>
+            <input th:field="*{nombreProducto}" type="text" class="form-control" id="txtNombre"
+              placeholder="Ingrese el nombre del producto" />
+          </div>
+
+          <div class="form-group">
+            <label for="txtImage">Ruta del Producto</label>
+            <span>Ingrese una URL válida (debe terminar en .png / .jpg / etc.).</span>
+            <br>
+            <span>Tamaño recomendable: 800 X 800</span>
+            <input th:field="*{imagenProducto}" type="text" class="form-control" id="txtImage"
+              placeholder="Ingrese la url de la imagen" />
+          </div>
+
+          <div class="form-group">
+            <label for="txtDescripcion">Descripción</label>
+            <textarea th:field="*{descripcionProducto}" type="text" class="form-control" id="txtDescripcion"
+              placeholder="Descripción del producto"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="txtPrecio">Precio</label>
+            <input th:field="*{precioProducto}" type="number" class="form-control" id="txtPrecio" placeholder="0.00"
+              step="0.01" />
+          </div>
+
+          <div class="form-group">
+            <label for="txtStock">Stock</label>
+            <input th:field="*{stockProducto}" type="number" class="form-control" id="txtStock"
+              placeholder="Cantidad en stock" />
+          </div>
+
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+              Guardar Cambios
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+      <script th:src="@{/js/active.js}"></script>
+</body>
+
+</html>

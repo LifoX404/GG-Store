@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar cliente</title>
+    <link rel="stylesheet" th:href="@{/css/editarorden.css}">
+    <link rel="stylesheet" th:href="@{/css/aside.css}">
+</head>
+
+<body>
+    <div th:insert="~{fragments/aside :: aside}" class="sidebar"></div>
+    <main class="main-content">
+        <div class="header">
+            <h2>Editar Orden</h2>
+        </div>
+
+        <section>
+            <div class="container">
+                <form method="post" th:object="${orden}" th:action="@{/admin/ordenes/editar}">
+                    <input th:field="*{status}" type="hidden" class="form-control">
+                    <input th:field="*{cliente.codigoCliente}" type="hidden" class="form-control">
+                    <input th:field="*{metodoPago}" type="hidden" class="form-control">
+
+
+                    <div class="form-group">
+                        <label for="txtFecha">Código de orden</label>
+                        <input readonly th:field="*{codigoOrden}" type="text" class="form-control" id="txtFecha"
+                            placeholder="Fecha">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtFecha">Fecha de orden</label>
+                        <input th:field="*{fechaOrden}" type="datetime" class="form-control" id="txtFecha"
+                            placeholder="Fecha">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtMonto">Monto Total</label>
+                        <input th:field="*{totalOrden}" type="text" class="form-control" id="txtMonto"
+                            placeholder="Total">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtTelf">Teléfono de contacto</label>
+                        <input th:field="*{telefonoEntrega}" type="number" class="form-control" id="txtTelf"
+                            placeholder="Telefono">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtDireccion">Dirección de entrega</label>
+                        <input th:field="*{direccionEntrega}" type="text" class="form-control" id="txtDireccion"
+                            placeholder="Dirección">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="txtObserbacion">Observaciones</label>
+                        <input th:field="*{observaciones}" type="text" class="form-control" id="txtObserbacion"
+                            placeholder="Observaciones">
+                    </div>
+
+
+                    <div class="status-group">
+                        <label>Estado de la orden</label>
+                        <select class="form-control" th:field="*{estadoOrden}">
+                            <option value="PENDIENTE">PENDIENTE</option>
+                            <option value="CONFIRMADA">CONFIRMADA</option>
+                            <option value="PROCESANDO">PROCESANDO</option>
+                            <option value="ENVIADO">ENVIADO</option>
+                            <option value="ENTREGADO">ENTREGADO</option>
+                            <option value="CANCELADO">CANCELADO</option>
+                        </select>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+        <script th:src="@{/js/active.js}"></script>
+</body>
+
+</html>

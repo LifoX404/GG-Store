@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechnoPlus - Menú Principal</title>
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+</head>
+<body>
+<div th:insert="~{fragments/navbar :: navbar}" class="navbar"></div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Bienvenido a TechnoPlus</h1>
+                <p>Descubre la tecnología más avanzada con la mejor calidad y precios competitivos. Tu tienda de confianza para todas tus necesidades tecnológicas.</p>
+                <div class="hero-buttons">
+                    <a href="/productos" class="btn btn-primary">Explorar Productos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-banner">
+        <div class="container">
+            <div class="tech-content">
+                <div class="tech-text">
+                    <h2>Tecnología de Vanguardia</h2>
+                    <p>Ofrecemos los productos más innovadores del mercado, desde consolas hasta accesorios, siempre con la mejor relación calidad-precio.</p>
+                    <a href="/productos" class="btn btn-primary">Ver Catálogo</a>
+                </div>
+                <div class="tech-visual">
+                    <div class="tech-mockup">
+                        🖥️ Productos Premium
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Productos Disponibles</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-label">Clientes Satisfechos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">99%</div>
+                    <div class="stat-label">Satisfacción</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Soporte Técnico</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-header">
+                <h2>¿Por qué elegir TechnoPlus?</h2>
+                <p>Somos tu mejor opción para productos tecnológicos de calidad</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Envío Rápido</h3>
+                    <p>Recibe tus productos en tiempo record con nuestro sistema de envío express disponible en todo el país.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Garantía Total</h3>
+                    <p>Todos nuestros productos cuentan con garantía oficial y soporte técnico especializado las 24 horas.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💎</div>
+                    <h3>Calidad Premium</h3>
+                    <p>Seleccionamos cuidadosamente cada producto para ofrecerte solo lo mejor en tecnología y innovación.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>¿Listo para actualizar tu tecnología?</h2>
+            <p>Únete a miles de usuarios que ya confían en TechnoPlus para sus compras tecnológicas</p>
+            <a href="/auth/register" class="btn-cta">Crear Cuenta Gratis</a>
+        </div>
+    </section>
+<div th:insert="~{fragments/footer :: footer}" />
+</body>
+</html>

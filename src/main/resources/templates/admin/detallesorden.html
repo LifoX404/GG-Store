@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la orden</title>
+
+    <link rel="stylesheet" th:href="@{/css/adminordendetalles.css}">
+    <link rel="stylesheet" th:href="@{/css/aside.css}">
+
+</head>
+
+<body>
+    <div th:insert="~{fragments/aside :: aside}" class="sidebar"></div>
+    <main class="main-content">
+        <div class="header">
+            <h2>Detalles de la orden</h2>
+        </div>
+
+        <section>
+            <div class="container">
+                <form method="post" th:object="${orden}" th:action="@{/admin/productos/editar}">
+
+                    <div class="form-group">
+                        <label for="codigo">Código de orden</label>
+                        <span th:text="*{codigoOrden} ?: 'Sin código'" class="form-control"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fecha">Fecha de la orden</label>
+                        <span th:text="*{fechaOrden} ?: 'Sin fecha'" class="form-control"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cliente">Cliente</label>
+                        <div class="form-control client-info">
+                            <span th:text="'Nombre: ' + *{cliente.nombreCliente}" class="client-name"></span>
+                            <br>
+                            <span th:text="'Correo: ' + *{cliente.emailCliente}" class="client-email"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="direccion">Dirección de entrega</label>
+                        <span th:text="*{direccionEntrega} ?: 'Sin dirección'" class="form-control"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telf">Teléfono</label>
+                        <span th:text="*{telefonoEntrega} ?: 'Sin teléfono'" class="form-control"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="estado">Estado</label>
+                        <span th:text="*{estadoOrden} ?: 'Sin estado'" class="form-control"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="obs">Observaciones</label>
+                        <span th:text="*{observaciones} ?: 'Sin observaciones'" class="form-control-plaintext"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="items">Productos</label>
+                        <div class="products-container">
+                            <div th:each="ordenItem : ${orden.ordenItems}" class="product-item">
+                                <div class="product-row">
+                                    <!-- Imagen del producto -->
+                                    <img th:if="${#strings.startsWith(ordenItem.producto.imagenProducto, 'http')}"
+                                         th:src="${ordenItem.producto.imagenProducto}" 
+                                         alt="Imagen del producto" 
+                                         class="product-image" />
+
+                                    <img th:unless="${#strings.startsWith(ordenItem.producto.imagenProducto, 'http')}"
+                                         th:src="@{/images/{img}(img=${ordenItem.producto.imagenProducto})}" 
+                                         alt="Imagen del producto"
+                                         class="product-image" />
+                                    
+                                    <!-- Información del producto -->
+                                    <div class="product-info">
+                                        <span th:text="${ordenItem.producto.nombreProducto}" class="product-name"></span>
+                                        <span th:text="${ordenItem.cantidadItem}" class="product-quantity"></span>
+                                        <span th:text="'S/. ' + ${#numbers.formatDecimal(ordenItem.precioUnitario, 1, 2)}" class="product-price"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Total de la orden -->
+                    <div class="order-total" th:if="${orden.totalOrden}">
+                        <label style="color: white">Total de la orden</label>
+                        <div class="total-amount" th:text="'S/. ' + ${#numbers.formatDecimal(orden.totalOrden, 1, 2)}"></div>
+                    </div>
+
+                    <div class="status-group">
+                        <label>Status</label>
+                        <span class="status-value" th:text="*{status}">Activo</span>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <script th:src="@{/js/active.js}"></script>
+</body>
+
+</html>

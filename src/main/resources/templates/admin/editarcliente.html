@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar cliente</title>
+    <link rel="stylesheet" th:href="@{/css/editarcliente.css}">
+    <link rel="stylesheet" th:href="@{/css/aside.css}">
+</head>
+
+<body>
+    <div th:insert="~{fragments/aside :: aside}" class="sidebar"></div>
+<main class="main-content">
+    <div class="header">
+        <h2>Editar Cliente</h2>
+    </div>
+
+    <section>
+        <div class="container">
+            <form method="post" th:object="${cliente}" th:action="@{/admin/cliente/editar}">
+                <input th:field="*{codigoCliente}" type="hidden" class="form-control">
+
+                <div class="form-group">
+                    <label for="txtNombre">Nombre del cliente</label>
+                    <input th:field="*{nombreCliente}" type="text" class="form-control" id="txtNombre" placeholder="Ingrese el nombre del producto">
+                </div>
+
+                <div class="form-group">
+                    <label for="txtxEmail">Email</label>
+                    <input th:field="*{emailCliente}" type="text" class="form-control" id="txtxEmail" placeholder="Descripción del producto">
+                </div>
+
+                <div class="form-group">
+                    <label for="txtTelf">Telefono</label>
+                    <input th:field="*{telfCliente}" type="number" class="form-control" id="txtTelf" placeholder="0.00" step="1">
+                </div>
+
+                <div class="form-group">
+                    <label for="txtDir">Dirección</label>
+                    <input th:field="*{direccionCliente}" type="text" class="form-control" id="txtDir" placeholder="Direccion del cliente">
+                </div>
+
+                <div class="form-group">
+                    <label for="txtFecha">Fecha de creación</label>
+                    <input th:field="*{fecRegCliente}" type="date" class="form-control" id="txtFecha" placeholder="Fecha de creación" readonly>
+                </div>
+
+                <div class="status-group">
+                    <label>Estado del Producto</label>
+                    <span class="status-value" th:text="*{status}">Activo</span>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+        
+    </section>
+</main>
+    <script th:src="@{/js/active.js}"></script>
+</body>
+
+</html>

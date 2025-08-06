@@ -1,0 +1,247 @@
+/* Variables CSS para consistencia */
+:root {
+    --primary-black: #232323;
+    --primary-color: #DC143C;
+    --bg-color: azure;
+    --gradient-primary: linear-gradient(135deg, #DC143C 0%, #b31232 100%);
+    --gradient-dark: linear-gradient(135deg, #232323 0%, #1a1a1a 100%);
+    --shadow-primary: 0 4px 15px rgba(220, 20, 60, 0.3);
+    --shadow-dark: 0 4px 15px rgba(35, 35, 35, 0.3);
+}
+
+/* Navbar Styles */
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: var(--primary-black);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    border-bottom: 3px solid var(--primary-color);
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+nav li {
+    margin: 0;
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px 12px 0;
+    gap: 10px;
+    transition: transform 0.3s ease;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    padding: 8px;
+}
+
+nav h1 {
+    color: white;
+    font-size: 24px;
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.nav-center {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 0 auto;
+}
+
+.nav-center a {
+    color: white;
+    padding: 18px 20px;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-center a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-center a:hover {
+    background: var(--gradient-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-primary);
+}
+
+.nav-center a:hover::before {
+    width: 100%;
+}
+
+.auth-section {
+    margin-left: auto;
+}
+
+.login-link {
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: 500;
+    background: var(--gradient-primary);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-primary);
+}
+
+.login-link:hover {
+    background: linear-gradient(135deg, #b31232 0%, #8b0f26 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(220, 20, 60, 0.5);
+}
+
+.user-section {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    color: white;
+    font-weight: 500;
+    gap: 15px;
+    background: rgba(220, 20, 60, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(220, 20, 60, 0.3);
+}
+
+.user-welcome {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.user-welcome::before {
+    content: '👾';
+    font-size: 16px;
+}
+
+.username {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.logout-form {
+    margin: 0;
+}
+
+.logout-btn {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-primary);
+}
+
+.logout-btn:hover {
+    background: linear-gradient(135deg, #b31232 0%, #8b0f26 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(220, 20, 60, 0.5);
+}
+
+/* Responsive Design para Navbar */
+@media (max-width: 768px) {
+    nav ul {
+        flex-wrap: wrap;
+        padding: 0 10px;
+    }
+
+    .logo {
+        flex: 1 1 100%;
+        justify-content: center;
+        padding: 15px;
+        border-bottom: 1px solid #444;
+    }
+
+    .nav-center {
+        flex: 1 1 100%;
+        justify-content: center;
+        gap: 0;
+    }
+
+    .nav-center a {
+        padding: 14px 15px;
+        font-size: 14px;
+        flex: 1;
+        text-align: center;
+    }
+
+    .auth-section {
+        flex: 1 1 100%;
+        margin: 0;
+        padding: 10px;
+        justify-content: center;
+        border-top: 1px solid #444;
+    }
+
+    .user-section {
+        justify-content: center;
+        width: 100%;
+    }
+
+    nav h1 {
+        font-size: 20px;
+    }
+
+    .logo img {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-center {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .nav-center a {
+        width: 100%;
+        padding: 12px;
+        border-bottom: 1px solid #444;
+    }
+
+    .user-section {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+}

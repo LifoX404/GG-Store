@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Mis Órdenes - TechnoPlus</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/ordenes.css}">
+</head>
+
+<body>
+    <!-- Navbar incluido -->
+    <nav th:replace="~{fragments/navbar :: navbar}"></nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1 class="page-title">Mis Órdenes</h1>
+            <p class="page-subtitle">Gestiona y revisa el historial de tus pedidos</p>
+        </div>
+
+        <div class="orders-grid">
+            <!-- Ejemplo de orden con datos dinámicos -->
+            <div class="order-card" th:each="orden : ${ordenes}">
+                <div class="order-header">
+                    <div class="order-number">
+                        Orden #<span th:text="${orden.codigoOrden}">12345</span>
+                    </div>
+                    <div class="order-date" th:text="${orden.fechaOrden}">15/06/2024</div>
+                </div>
+
+                <div class="order-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Total</span>
+                        <span class="detail-value total-amount">S/ <span
+                                th:text="${orden.totalOrden}">299.99</span></span>
+                    </div>
+
+                    <div class="detail-item">
+                        <span class="detail-label">Método de Pago</span>
+                        <div class="payment-method">
+                            <span th:text="${orden.metodoPago}">Tarjeta de Crédito</span>
+                        </div>
+                    </div>
+
+                    <div class="detail-item">
+                        <span class="detail-label">Estado</span>
+                        <span class="status-badge" th:classappend="${orden.estadoOrden.name() == 'PENDIENTE' ? 'status-pending' : 
+                                               orden.estadoOrden.name() == 'CONFIRMADA' ? 'status-confirmed' : 
+                                               orden.estadoOrden.name() == 'PROCESANDO' ? 'status-processing' : 
+                                               orden.estadoOrden.name() == 'ENVIADO' ? 'status-shipped' : 
+                                               orden.estadoOrden.name() == 'ENTREGADO' ? 'status-delivered' : 
+                                               'status-cancelled'}" th:text="${orden.estadoOrden}">Pendiente</span>
+                    </div>
+                </div>
+
+                <div class="observations" th:if="${orden.observaciones != null and orden.observaciones != ''}">
+                    <strong>Observaciones:</strong> <span th:text="${orden.observaciones}">Entrega en horario de
+                        oficina</span>
+                </div>
+
+                <div class="order-actions">
+                    <form th:action="@{/ordenes/{codigo}/base64(codigo=${orden.codigoOrden})}" method="get"
+                        class="print-form">
+                        <button type="submit" class="action-btn btn-print">
+                            🖨️ Imprimir
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Estado vacío cuando no hay órdenes -->
+            <div class="empty-state" th:if="${ordenes == null or ordenes.empty}">
+                <div class="empty-state-icon">🛒</div>
+                <h2 class="empty-state-title">No tienes órdenes aún</h2>
+                <p class="empty-state-text">Cuando realices tu primera compra, aparecerá aquí</p>
+                <a href="/productos" class="action-btn btn-primary">
+                    🛍️ Explorar Productos
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer incluido -->
+    <footer th:replace="~{fragments/footer :: footer}"></footer>
+</body>
+
+</html>

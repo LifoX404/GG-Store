@@ -1,0 +1,38 @@
+<aside th:fragment="aside" class="sidebar">
+    <div class="sidebar-header">
+        <img src="/images/TechPlusLogo.svg" alt="TechnoPlus Logo" />
+        <h2 class="admin-title">TechPlus</h2>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="nav-item">
+            <a th:href="@{/admin/index}" class="nav-link" id="nav-dashboard">
+                <h3>Dashboard</h3>
+            </a>
+        </div>
+
+        <div class="nav-item">
+            <a th:href="@{/admin/clientes}" class="nav-link" id="nav-clientes">
+                <h3>Clientes</h3>
+            </a>
+        </div>
+
+        <div class="nav-item">
+            <a th:href="@{/admin/ordenes}" class="nav-link" id="nav-ordenes">
+                <h3>Órdenes</h3>
+            </a>
+        </div>
+
+        <div class="nav-item">
+            <a th:href="@{/admin/productos}" class="nav-link" id="nav-productos">
+                <h3>Productos</h3>
+            </a>
+        </div>
+    </nav>
+
+    <div class="logout-section">
+        <form class="logout-btn" th:action="@{/auth/logout}" method="post">
+            <button type="submit" class="logout-btn">Cerrar Sesión</button>
+        </form>
+    </div>
+</aside>

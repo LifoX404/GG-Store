@@ -1,0 +1,128 @@
+:root {
+    --primary-black: #232323;
+    --primary-crimson: #DC143C;
+    --dark-bg: #1a1a2e;
+    --darker-bg: #16213e;
+    --card-bg: #0f3460;
+    --text-light: #ffffff;
+    --text-gray: #b0b0b0;
+
+    --success: #28a745;
+    --warning: #ffc107;
+    --danger: #dc3545;
+}
+
+*{
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 240px;
+    height: 100vh;
+    background: var(--primary-black);
+    z-index: 1000;
+}
+
+.sidebar-header {
+      display: flex;
+  align-items: center;
+  padding: 12px 20px 12px 0;
+  gap: 10px;
+  transition: transform 0.3s ease;
+    padding: 2rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-header img {
+    width: 50px;
+    height: 50px;
+    margin-right: 1rem;
+}
+
+.admin-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.admin-subtitle {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+}
+
+.nav-menu {
+    padding: 1.5rem 0;
+}
+
+.nav-item {
+    margin-bottom: 0.5rem;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-left-color: var(--text-light);
+    transform: translateX(5px);
+}
+
+.nav-link.active {
+    background: rgba(255, 255, 255, 0.2);
+    border-left-color: var(--text-light);
+}
+
+.nav-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    fill: currentColor;
+}
+
+.logout-section {
+    position: absolute;
+    bottom: 2rem;
+    left: 0;
+    right: 0;
+    padding: 0 1.5rem;
+}
+
+.logout-btn button{
+    background: rgba(0, 0, 0, alpha);
+    width: 100%;
+}
+
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: var(--primary-crimson);
+    background: rgba(220, 20, 60, 0.8);
+    border: none;
+    border-radius: 8px;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+
+.logout-btn:hover {
+    background: var(--primary-crimson);
+    transform: translateY(-2px);
+}

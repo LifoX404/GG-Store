@@ -1,0 +1,51 @@
+
+table th:nth-child(1) { width: 25%; } /* Producto */
+table th:nth-child(2) { width: 15%; } /* Imagen */
+table th:nth-child(3) { width: 15%; } /* Stock */
+table th:nth-child(4) { width: 15%; } /* Estado */
+table th:nth-child(5) { width: 30%; } /* Acciones */
+
+
+.actions-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+}
+
+.product-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.product-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.stock-number {
+    background: var(--info);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.add-producto{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--success);
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    max-width: 200px;
+}

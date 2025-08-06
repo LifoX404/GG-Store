@@ -1,0 +1,38 @@
+<nav th:fragment="navbar">
+    <ul>
+        <!-- Logo Section -->
+        <li>
+            <div class="logo">
+                <img src="/images/TechPlusLogo.svg" alt="TechnoPlus Logo" />
+                <h1>TechnoPlus</h1>
+            </div>
+        </li>
+
+        <!-- Navigation Links - Centrados -->
+        <li class="nav-center">
+            <a th:href="@{/index}">Inicio</a>
+            <a th:href="@{/productos/}">Productos</a>
+            <a th:href="@{/carrito/}">Carrito</a>
+            <a th:if="${session.userRol == 'CLIENT'}" href="/ordenes">Órdenes</a>
+        </li>
+
+        <li class="auth-section">
+            <!-- Login (cuando no hay sesión) -->
+            <div th:if="${session.username == null}">
+                <a th:href="@{/auth/login}" class="login-link">Iniciar sesión</a>
+            </div>
+
+            <!-- User info (cuando hay sesión) -->
+            <div th:if="${session.username != null}">
+                <div class="user-section">
+                    <div class="user-welcome">
+                        Bienvenido, <span class="username" th:text="${session.username}">Usuario</span>
+                    </div>
+                    <form class="logout-form" th:action="@{/auth/logout}" method="post">
+                        <button type="submit" class="logout-btn">Cerrar Sesión</button>
+                    </form>
+                </div>
+            </div>
+        </li>
+    </ul>
+</nav>

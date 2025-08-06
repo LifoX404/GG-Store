@@ -1,0 +1,8 @@
+td{
+    padding: 0.5rem 1rem;
+}
+
+table th:nth-child(1) { width: 18%; } /* Producto */
+table th:nth-child(2) { width: 18%; } /* Imagen */
+table th:nth-child(3) { width: 18%; } /* Stock */
+table th:nth-child(4) { width: 18%; } /* Estado */

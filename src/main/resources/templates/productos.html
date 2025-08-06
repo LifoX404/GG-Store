@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Productos</title>
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/productos.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+</head>
+
+
+<body>
+    <div th:insert="~{fragments/navbar :: navbar}" />
+
+    <main class="main-container">
+        <section>
+            <h1>Productos disponibles</h1>
+        </section>
+        <div class="products-grid">
+            <div class="card-container" th:each="producto : ${productos}">
+                <div class="card-body">
+                    <img th:if="${#strings.startsWith(producto.imagenProducto, 'http')}"
+                        th:src="${producto.imagenProducto}" alt="Imagen del producto" />
+
+                    <!-- Imagen desde carpeta local -->
+                    <img th:unless="${#strings.startsWith(producto.imagenProducto, 'http')}"
+                        th:src="@{/images/{img}(img=${producto.imagenProducto})}" alt="Imagen del producto" />
+                </div>
+                <div class="card-bottom">
+                    <h3 class="product-name" th:text="${producto.nombreProducto}">
+                        Nombre del producto
+                    </h3>
+                    <p class="product-price" th:text="'S/.' + ${producto.precioProducto}">
+                        $0.00
+                    </p>
+                    <a th:href="@{/productos/{id}(id=${producto.codigoProducto})}">Ver detalles</a>
+                    <form method="post" th:action="@{/carrito/agregar}">
+                        <input type="hidden" name="cantidad" value="1" />
+                        <input type="hidden" name="productoId" th:value="${producto.codigoProducto}" />
+                        <button class="add-to-cart-btn">Agregar al carrito</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div th:insert="~{fragments/footer :: footer}" />
+</body>
+
+</html>

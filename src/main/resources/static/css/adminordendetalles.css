@@ -1,0 +1,238 @@
+:root {
+    --primary-black: #232323;
+    --secondary-color: #DC143C;
+    --bg-color: azure;
+    --text-color: #333;
+    --border-color: #ddd;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --input-focus: rgba(220, 20, 60, 0.2);
+    --disable: rgb(235, 235, 235);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.main-content {
+    max-width: 700px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px var(--shadow-color);
+    overflow: hidden;
+    border: 2px solid var(--border-color);
+}
+
+.header {
+    background: linear-gradient(135deg, var(--primary-black), #333);
+    color: white;
+    padding: 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.header h2 {
+    font-size: 2.5rem;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+.container {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--primary-black);
+    font-size: 1.1rem;
+}
+
+.form-control {
+    padding: 10px 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: var(--disable);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px var(--input-focus);
+    transform: translateY(-1px);
+}
+
+.form-control:hover {
+    border-color: var(--secondary-color);
+}
+
+.status-group {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.status-group label {
+    margin-bottom: 10px;
+    color: var(--primary-black);
+}
+
+.status-value {
+    background: var(--secondary-color);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 8px rgba(220, 20, 60, 0.3);
+}
+
+/* Estilos para la sección de productos */
+.products-container {
+    background: #f8f9fa;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.product-item {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.product-item:last-child {
+    margin-bottom: 0;
+}
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.product-table td {
+    padding: 10px;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.product-table td:last-child {
+    border-bottom: none;
+}
+
+/* Estilos específicos para las imágenes de productos */
+.product-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
+    box-shadow: 0 2px 8px var(--shadow-color);
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.product-image:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+    border-color: var(--secondary-color);
+}
+
+/* Layout para mostrar producto en línea */
+.product-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.product-info {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 15px;
+    align-items: center;
+}
+
+.product-name {
+    font-weight: 600;
+    color: var(--primary-black);
+    font-size: 1.1rem;
+}
+
+.product-quantity {
+    text-align: center;
+    font-weight: 500;
+    background: var(--secondary-color);
+    color: white;
+    padding: 5px;
+    border-radius: 15px;
+    display: inline-block;
+}
+
+.product-price {
+    text-align: right;
+    font-weight: 600;
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+}
+
+/* Mejorar espaciado de cliente */
+.client-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.client-name {
+    font-weight: 600;
+    color: var(--primary-black);
+}
+
+.client-email {
+    color: #666;
+    font-style: italic;
+}
+
+/* Estilos para totales */
+.order-total {
+    background: linear-gradient(135deg, var(--primary-black), #333);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.total-amount {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 10px;
+}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,7 +87,7 @@
                 <div class="feature-card">
                     <div class="feature-icon">💎</div>
                     <h3>Calidad Premium</h3>
-                    <p>Seleccionamos cuidadosamente cada producto para ofrecerte solo lo mejor en tecnología y innovación.</p>
+                    <p>Seleccionamos cuidadosamente cada producto para ofrecerte solo lo mejor en tecnología e innovación.</p>
                 </div>
             </div>
         </div>
@@ -101,6 +101,6 @@
             <a href="/auth/register" class="btn-cta">Crear Cuenta Gratis</a>
         </div>
     </section>
-<div th:insert="~{fragments/footer :: footer}" />
+<div th:insert="~{fragments/footer :: footer}"></div>
 </body>
 </html>

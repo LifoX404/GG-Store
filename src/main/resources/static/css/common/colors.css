@@ -1,0 +1,13 @@
+:root {
+    --primary-black: #232323;
+    --primary-color: #DC143C;
+    --bg-color: azure;
+    --gradient-primary: linear-gradient(135deg, #DC143C 0%, #b31232 100%);
+    --gradient-dark: linear-gradient(135deg, #232323 0%, #1a1a1a 100%);
+    --shadow-primary: 0 4px 15px rgba(220, 20, 60, 0.3);
+    --shadow-dark: 0 4px 15px rgba(35, 35, 35, 0.3);
+
+    --bg-dark: #232323;
+
+    --text-color: #ffffff;
+}

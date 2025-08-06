@@ -28,7 +28,7 @@ public class ProductosController {
         List<Producto> lista= productoService.findAllActive();
         model.addAttribute("productos", lista);
 
-        return "productos";
+        return "home/productos/productos";
     }
 
     @GetMapping("/{id}")
@@ -42,6 +42,6 @@ public class ProductosController {
         dtoP.setImagenProducto(producto.getImagenProducto());
         dtoP.setStockProducto(producto.getStockProducto());
         model.addAttribute("producto", dtoP);
-        return "detalles";
+        return "home/productos/detalles";
     }
 }

@@ -10,7 +10,7 @@ public class InicioController {
 
     @GetMapping(value = {"", "index", "home", "inicio"})
     public String inicio() {
-        return "index";
+        return "home/index";
     }
 
 

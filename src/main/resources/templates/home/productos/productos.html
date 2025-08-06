@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: layout(~{::title}, ~{::main}, ~{::pageStyles})}">
 <head>
-    <meta charset="UTF-8" />
-    <title>Productos</title>
-    <link rel="stylesheet" th:href="@{/css/footer.css}">
-    <link rel="stylesheet" th:href="@{/css/productos.css}">
-    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+
+    <title>Productos - GG-Store</title>
+
+    <th:block th:fragment="pageStyles">
+        <link rel="stylesheet" th:href="@{/css/common/colors.css}">
+        <link rel="stylesheet" th:href="@{/css/fragments/navbar.css}">
+        <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
+        <link rel="stylesheet" th:href="@{/css/home/productos.css}">
+    </th:block>
+
 </head>
 
 
 <body>
-    <div th:insert="~{fragments/navbar :: navbar}" />
 
     <main class="main-container">
         <section>
@@ -45,7 +49,6 @@
         </div>
     </main>
 
-    <div th:insert="~{fragments/footer :: footer}" />
 </body>
 
 </html>

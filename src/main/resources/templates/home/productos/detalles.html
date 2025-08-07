@@ -1,29 +1,24 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org"
-    th:replace="~{layout/base :: layout(~{::title}, ~{::main}, ~{::pageStyles})}">
+    th:replace="~{layout/public :: layout(~{::title}, ~{::main}, ~{::pageStyles})}">
 
 <head>
 
     <title th:text="${producto.nombreProducto}"></title>
 
     <th:block th:fragment="pageStyles">
-        <link rel="stylesheet" th:href="@{/css/common/colors.css}">
+        <link rel="stylesheet" th:href="@{/css/common/public.css}">
         <link rel="stylesheet" th:href="@{/css/common/navbar.css}">
         <link rel="stylesheet" th:href="@{/css/common/footer.css}">
         <link rel="stylesheet" th:href="@{/css/home/detalles.css}">
     </th:block>
 
-    <link rel="stylesheet" th:href="@{/css/navbar.css}" />
-    <link rel="stylesheet" th:href="@{/css/footer.css}" />
-    <link rel="stylesheet" th:href="@{/css/index.css}" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <link rel="stylesheet" th:href="@{/css/detallesproductos.css}" />
 </head>
 
 <body>
-    <div th:insert="~{fragments/navbar :: navbar}"></div>
 
-    <div class="breadcrumb">
+    <main>
+            <div class="breadcrumb">
         <nav>
             <ul>
                 <li>
@@ -144,8 +139,6 @@
         </div>
     </div>
 
-    <div th:insert="~{fragments/footer :: footer}"></div>
-
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const productImage = document.querySelector(".product-image");
@@ -188,6 +181,7 @@
             }
         });
     </script>
+    </main>
 </body>
 
 </html>

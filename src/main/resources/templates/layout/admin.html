@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es" th:fragment="layout (title, content, pageStyles)">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <th:block th:replace="${title}">
+        <title>Dashboard Admin</title>
+    </th:block>
+
+    <th:block th:replace="${pageStyles} ?: ~{}"></th:block>
+</head>
+<body>
+
+    <div th:insert="~{fragments/aside :: aside}" class="sidebar"></div>
+    
+    <main th:replace="${content}">
+        <!-- El contenido específico de cada página se inserta aquí -->
+    </main>
+    
+</body>
+
+</html>

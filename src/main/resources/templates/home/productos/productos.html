@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org"
-    th:replace="~{layout/base :: layout(~{::title}, ~{::main}, ~{::pageStyles})}">
+    th:replace="~{layout/public :: layout(~{::title}, ~{::main}, ~{::pageStyles})}">
 
 <head>
 
     <title>Productos</title>
 
     <th:block th:fragment="pageStyles">
-        <link rel="stylesheet" th:href="@{/css/common/colors.css}">
+        <link rel="stylesheet" th:href="@{/css/common/public.css}">
         <link rel="stylesheet" th:href="@{/css/common/navbar.css}">
         <link rel="stylesheet" th:href="@{/css/common/footer.css}">
         <link rel="stylesheet" th:href="@{/css/home/productos.css}">
@@ -18,38 +18,39 @@
 
 <body>
 
-    <main class="main-container">
-        <section>
-            <h1>Productos disponibles</h1>
-        </section>
-        <div class="products-grid">
-            <div class="card-container" th:each="producto : ${productos}">
-                <div class="card-body">
-                    <img th:if="${#strings.startsWith(producto.imagenProducto, 'http')}"
-                        th:src="${producto.imagenProducto}" alt="Imagen del producto" />
+    <main>
+        <div class="main-container">
+            <section>
+                <h1>Productos disponibles</h1>
+            </section>
+            <div class="products-grid">
+                <div class="card-container" th:each="producto : ${productos}">
+                    <div class="card-body">
+                        <img th:if="${#strings.startsWith(producto.imagenProducto, 'http')}"
+                            th:src="${producto.imagenProducto}" alt="Imagen del producto" />
 
-                    <!-- Imagen desde carpeta local -->
-                    <img th:unless="${#strings.startsWith(producto.imagenProducto, 'http')}"
-                        th:src="@{/images/{img}(img=${producto.imagenProducto})}" alt="Imagen del producto" />
-                </div>
-                <div class="card-bottom">
-                    <h3 class="product-name" th:text="${producto.nombreProducto}">
-                        Nombre del producto
-                    </h3>
-                    <p class="product-price" th:text="'S/.' + ${producto.precioProducto}">
-                        $0.00
-                    </p>
-                    <a th:href="@{/productos/{id}(id=${producto.codigoProducto})}">Ver detalles</a>
-                    <form method="post" th:action="@{/carrito/agregar}">
-                        <input type="hidden" name="cantidad" value="1" />
-                        <input type="hidden" name="productoId" th:value="${producto.codigoProducto}" />
-                        <button class="add-to-cart-btn">Agregar al carrito</button>
-                    </form>
+                        <!-- Imagen desde carpeta local -->
+                        <img th:unless="${#strings.startsWith(producto.imagenProducto, 'http')}"
+                            th:src="@{/images/{img}(img=${producto.imagenProducto})}" alt="Imagen del producto" />
+                    </div>
+                    <div class="card-bottom">
+                        <h3 class="product-name" th:text="${producto.nombreProducto}">
+                            Nombre del producto
+                        </h3>
+                        <p class="product-price" th:text="'S/.' + ${producto.precioProducto}">
+                            $0.00
+                        </p>
+                        <a th:href="@{/productos/{id}(id=${producto.codigoProducto})}">Ver detalles</a>
+                        <form method="post" th:action="@{/carrito/agregar}">
+                            <input type="hidden" name="cantidad" value="1" />
+                            <input type="hidden" name="productoId" th:value="${producto.codigoProducto}" />
+                            <button class="add-to-cart-btn">Agregar al carrito</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
-
 </body>
 
 </html>

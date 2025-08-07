@@ -25,17 +25,17 @@
 
                     <div class="form-group">
                         <label for="codigo">Código de orden</label>
-                        <span th:text="*{codigoOrden} ?: 'Sin código'" class="form-control"></span>
+                        <span id="codigo" th:text="*{codigoOrden} ?: 'Sin código'" class="form-control"></span>
                     </div>
 
                     <div class="form-group">
                         <label for="fecha">Fecha de la orden</label>
-                        <span th:text="*{fechaOrden} ?: 'Sin fecha'" class="form-control"></span>
+                        <span id="fecha" th:text="*{fechaOrden} ?: 'Sin fecha'" class="form-control"></span>
                     </div>
 
                     <div class="form-group">
                         <label for="cliente">Cliente</label>
-                        <div class="form-control client-info">
+                        <div id="cliente" class="form-control client-info">
                             <span th:text="'Nombre: ' + *{cliente.nombreCliente}" class="client-name"></span>
                             <br>
                             <span th:text="'Correo: ' + *{cliente.emailCliente}" class="client-email"></span>
@@ -44,27 +44,27 @@
 
                     <div class="form-group">
                         <label for="direccion">Dirección de entrega</label>
-                        <span th:text="*{direccionEntrega} ?: 'Sin dirección'" class="form-control"></span>
+                        <span id="direccion" th:text="*{direccionEntrega} ?: 'Sin dirección'" class="form-control"></span>
                     </div>
 
                     <div class="form-group">
                         <label for="telf">Teléfono</label>
-                        <span th:text="*{telefonoEntrega} ?: 'Sin teléfono'" class="form-control"></span>
+                        <span id="telf" th:text="*{telefonoEntrega} ?: 'Sin teléfono'" class="form-control"></span>
                     </div>
 
                     <div class="form-group">
                         <label for="estado">Estado</label>
-                        <span th:text="*{estadoOrden} ?: 'Sin estado'" class="form-control"></span>
+                        <span id="estado" th:text="*{estadoOrden} ?: 'Sin estado'" class="form-control"></span>
                     </div>
 
                     <div class="form-group">
                         <label for="obs">Observaciones</label>
-                        <span th:text="*{observaciones} ?: 'Sin observaciones'" class="form-control-plaintext"></span>
+                        <span id="obs" th:text="*{observaciones} ?: 'Sin observaciones'" class="form-control-plaintext"></span>
                     </div>
 
                     <div class="form-group">
                         <label for="items">Productos</label>
-                        <div class="products-container">
+                        <div id="items" class="products-container">
                             <div th:each="ordenItem : ${orden.ordenItems}" class="product-item">
                                 <div class="product-row">
                                     <!-- Imagen del producto -->

@@ -16,7 +16,7 @@
 <div th:insert="~{fragments/navbar :: navbar}" class="navbar"></div>
 
 <!-- Contenido principal -->
-<main class="main-content" th:replace="${content}">
+<main th:replace="${content}">
     <!-- El contenido específico de cada página se inserta aquí -->
 </main>
 

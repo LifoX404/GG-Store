@@ -1,95 +1,94 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{layout/base :: layout(~{::title}, ~{::main}, ~{::pageStyles})}">
+    th:replace="~{layout/admin :: layout(~{::title}, ~{::main}, ~{::pageStyles})}">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Órdenes</title>
-    <link rel="stylesheet" th:href="@{/css/aside.css}">
-    <link rel="stylesheet" th:href="@{/css/table.css}">
-    <link rel="stylesheet" th:href="@{/css/adminordenes.css}" />
-    
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Gestión de Órdenes</title>
+
+    <th:block th:fragment="pageStyles">
+        <link rel="stylesheet" th:href="@{/css/common/admin.css}">
+        <link rel="stylesheet" th:href="@{/css/common/aside.css}">
+        <link rel="stylesheet" th:href="@{/css/admin/dashboard.css}">
+    </th:block>
+
 </head>
 
 <body>
-    <div th:insert="~{fragments/aside :: aside}" class="sidebar"></div>
-    
-    <!-- Main Content -->
-    <main class="main-container">
-        <!-- Page Header -->
-        <div class="page-header">
-            <h1>Gestión de Órdenes</h1>
-            <p>Administra las órdenes de pedidos y su estado de entrega</p>
-        </div>
+    <main>
+        <div class="main-container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1>Gestión de Órdenes</h1>
+                <p>Administra las órdenes de pedidos y su estado de entrega</p>
+            </div>
 
-        <!-- Orders Table -->
-        <div class="table-container">
-            <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Total</th>
-                            <th scope="col">Método Pago</th>
-                            <th scope="col">Estado Orden</th>
-                            <th scope="col">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="item:${ordenes}">
-                            <td>
-                                <span class="date-badge" th:text="${#temporals.format(item.fechaOrden, 'dd/MM/yyyy')}">
-                                    01/01/2024
-                                </span>
-                            </td>
-                            <td>
-                                <span class="price-badge" th:text="${'S/ ' + #numbers.formatDecimal(item.totalOrden, 1, 2)}">
-                                    S/ 0.00
-                                </span>
-                            </td>
-                            <td>
-                                <span class="code-badge" th:text="${item.metodoPago}">Efectivo</span>
-                            </td>
-                            <td>
-<span class="status-badge"
-      th:classappend="${item.estadoOrden.name() == 'PENDIENTE' ? 'status-pending' : 
+            <!-- Orders Table -->
+            <div class="table-container">
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Método Pago</th>
+                                <th scope="col">Estado Orden</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="item:${ordenes}">
+                                <td>
+                                    <span class="date-badge"
+                                        th:text="${#temporals.format(item.fechaOrden, 'dd/MM/yyyy')}">
+                                        01/01/2024
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="price-badge"
+                                        th:text="${'S/ ' + #numbers.formatDecimal(item.totalOrden, 1, 2)}">
+                                        S/ 0.00
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="code-badge" th:text="${item.metodoPago}">Efectivo</span>
+                                </td>
+                                <td>
+                                    <span class="status-badge" th:classappend="${item.estadoOrden.name() == 'PENDIENTE' ? 'status-pending' : 
                        item.estadoOrden.name() == 'CONFIRMADA' ? 'status-confirmed' : 
                        item.estadoOrden.name() == 'PROCESANDO' ? 'status-processing' : 
                        item.estadoOrden.name() == 'ENVIADO' ? 'status-shipped' : 
                        item.estadoOrden.name() == 'ENTREGADO' ? 'status-delivered' : 
-                       'status-cancelled'}"
-      th:text="${item.estadoOrden}">Pendiente</span>
-                            </td>
-                            <td>
-                                <div class="action-buttons">
-                                    <a th:href="@{/admin/ordenes/detalles/{codigo}(codigo=${item.codigoOrden})}" 
-                                       class="btn btn-primary btn-sm">
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                                            <circle cx="12" cy="12" r="3"/>
-                                        </svg>
-                                        Detalles
-                                    </a>
-                                    <a th:href="@{/admin/ordenes/editar/{codigo}(codigo=${item.codigoOrden})}" 
-                                       class="btn btn-warning btn-sm">
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
-                                            <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
-                                        </svg>
-                                        Editar
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                       'status-cancelled'}" th:text="${item.estadoOrden}">Pendiente</span>
+                                </td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <a th:href="@{/admin/ordenes/detalles/{codigo}(codigo=${item.codigoOrden})}"
+                                            class="btn btn-primary btn-sm">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                                <circle cx="12" cy="12" r="3" />
+                                            </svg>
+                                            Detalles
+                                        </a>
+                                        <a th:href="@{/admin/ordenes/editar/{codigo}(codigo=${item.codigoOrden})}"
+                                            class="btn btn-warning btn-sm">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
+                                                <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
+                                            </svg>
+                                            Editar
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </main>
         <script th:src="@{/js/active.js}"></script>
+    </main>
 </body>
 
 </html>

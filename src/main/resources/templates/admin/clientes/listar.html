@@ -5,10 +5,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gestión de Clientes</title>
-    <link rel="stylesheet" th:href="@{/css/aside.css}" />
-    <link rel="stylesheet" th:href="@{/css/adminproducto.css}" />
-    <link rel="stylesheet" th:href="@{/css/table.css}" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <th:block th:fragment="pageStyles">
+        <link rel="stylesheet" th:href="@{/css/common/admin.css}">
+        <link rel="stylesheet" th:href="@{/css/common/aside.css}">
+        <link rel="stylesheet" th:href="@{/css/common/table.css}">
+        <link rel="stylesheet" th:href="@{/css/admin/dashboard.css}">
+    </th:block>
+
 </head>
 
 <body>

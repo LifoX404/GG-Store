@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org"
-    th:replace="~{layout/base :: layout(~{::title}, ~{::main}, ~{::pageStyles})}">
+    th:replace="~{layout/public :: layout(~{::title}, ~{::main}, ~{::pageStyles})}">
 
 <head>
     
     <title>Inicio - GG-Store</title>
 
     <th:block th:fragment="pageStyles">
-        <link rel="stylesheet" th:href="@{/css/common/colors.css}">
+        <link rel="stylesheet" th:href="@{/css/common/public.css}">
         <link rel="stylesheet" th:href="@{/css/common/navbar.css}">
         <link rel="stylesheet" th:href="@{/css/common/footer.css}">
         <link rel="stylesheet" th:href="@{/css/home/index.css}">

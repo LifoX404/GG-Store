@@ -1,5 +1,3 @@
-@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css');
-
 :root {
     --primary-black: #232323;
     --primary-color: #DC143C;
@@ -26,17 +24,9 @@
     --bg-dark: #232323;
 
     --text-color: #ffffff;
-}
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: var(--bg-light);
-    color: var(--primary-black);
-    line-height: 1.6;
+    --success: #28a745;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --info: #17a2b8;
 }

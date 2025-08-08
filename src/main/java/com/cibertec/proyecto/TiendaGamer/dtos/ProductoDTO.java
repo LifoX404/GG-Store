@@ -1,11 +1,9 @@
 package com.cibertec.proyecto.TiendaGamer.dtos;
 
-
 import lombok.*;
 
 import java.util.UUID;
 
-//NO USA JPA
 @Getter
 @Setter
 @AllArgsConstructor

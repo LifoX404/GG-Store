@@ -32,6 +32,14 @@ public class Producto {
     @Column(name = "status", columnDefinition = "BIT(1) DEFAULT 1")
     private Boolean status = true;
 
+    @ManyToOne
+    @JoinColumn(name = "codigo_categoria", referencedColumnName = "codigo_categoria")
+    private Categoria categoria;
+
+    @ManyToOne
+    @JoinColumn(name = "codigo_marca", referencedColumnName = "codigo_marca")
+    private Marca marca;
+
     public Producto() {
         this.codigoProducto = UUID.randomUUID();
     }

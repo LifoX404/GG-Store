@@ -57,9 +57,12 @@ public class CarritoService {
     }
 
     @Transactional
-    public Orden procesarOrden(HttpSession session, Cliente cliente,
-                               String direccionEntrega, String telefonoEntrega,
-                               String metodoPago, String observaciones) {
+    public Orden procesarOrden(HttpSession session,
+                               Cliente cliente,
+                               String direccionEntrega,
+                               String telefonoEntrega,
+                               String metodoPago,
+                               String observaciones) {
 
         CarritoSessionDTO carrito = obtenerCarritoDeSession(session);
 

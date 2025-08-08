@@ -22,11 +22,14 @@ public class OrdenItem {
     @JoinColumn(name = "codigo_producto", referencedColumnName = "codigo_producto")
     private Producto producto;
 
-    @Column(name = "cantidad_item", nullable = false)
-    private int cantidadItem;
+    @Column(name = "nombre_item", nullable = false, length = 100)
+    private String nombreItem;
 
     @Column(name = "precio_unitario", nullable = false)
     private Double precioUnitario;
+
+    @Column(name = "cantidad_item", nullable = false)
+    private int cantidadItem;
 
     @Column(name = "subtotal", nullable = false)
     private Double subtotal;
